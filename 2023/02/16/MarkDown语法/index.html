@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>MarkDown语法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="标题1标题2标题3标题4标题5标题6 这是一段引用  有序列表把大象放进冰箱一共分几步：  打开冰箱 把大象放进去 关上冰箱  无序列表：  表项1 表项2   表项3  任务列表   吃饭  睡觉  打豆豆  代码块 1int main() 数学公式： $$\frac{\partial f}{\partial x}&#x3D;2\sqrt{a}x$$ 表格：    姓名 年龄 成绩    KID">
+  <meta name="description" content="标题1标题2标题3标题4标题5标题6 这是一段引用  有序列表把大象放进冰箱一共分几步：  打开冰箱 把大象放进去 关上冰箱  无序列表：  表项1 表项2   表项3  任务列表  [ ] 吃饭 [ ] 睡觉 [ ] 打豆豆  代码块1int main()数学公式：  \frac{\partial f}{\partial x}&#x3D;2\sqrt{a}x表格：     姓名 年龄 成绩     KID">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MarkDown语法">
 <meta property="og:url" content="http://example.com/2023/02/16/MarkDown%E8%AF%AD%E6%B3%95/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="标题1标题2标题3标题4标题5标题6 这是一段引用  有序列表把大象放进冰箱一共分几步：  打开冰箱 把大象放进去 关上冰箱  无序列表：  表项1 表项2   表项3  任务列表   吃饭  睡觉  打豆豆  代码块 1int main() 数学公式： $$\frac{\partial f}{\partial x}&#x3D;2\sqrt{a}x$$ 表格：    姓名 年龄 成绩    KID">
+<meta property="og:description" content="标题1标题2标题3标题4标题5标题6 这是一段引用  有序列表把大象放进冰箱一共分几步：  打开冰箱 把大象放进去 关上冰箱  无序列表：  表项1 表项2   表项3  任务列表  [ ] 吃饭 [ ] 睡觉 [ ] 打豆豆  代码块1int main()数学公式：  \frac{\partial f}{\partial x}&#x3D;2\sqrt{a}x表格：     姓名 年龄 成绩     KID">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://pic.sogou.com/d?query=baidu&forbidqc=&entityid=&preQuery=&rawQuery=&queryList=&st=&did=3">
+<meta property="og:image" content="https://pic.sogou.com/d?query=baidu&amp;forbidqc=&amp;entityid=&amp;preQuery=&amp;rawQuery=&amp;queryList=&amp;st=&amp;did=3">
 <meta property="article:published_time" content="2023-02-16T12:05:10.000Z">
 <meta property="article:modified_time" content="2023-02-16T12:39:47.326Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pic.sogou.com/d?query=baidu&forbidqc=&entityid=&preQuery=&rawQuery=&queryList=&st=&did=3">
+<meta name="twitter:image" content="https://pic.sogou.com/d?query=baidu&amp;forbidqc=&amp;entityid=&amp;preQuery=&amp;rawQuery=&amp;queryList=&amp;st=&amp;did=3">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -195,15 +195,14 @@
 </ul>
 <p>任务列表</p>
 <ul>
-<li><input disabled="" type="checkbox"> 吃饭</li>
-<li><input disabled="" type="checkbox"> 睡觉</li>
-<li><input disabled="" type="checkbox"> 打豆豆</li>
+<li>[ ] 吃饭</li>
+<li>[ ] 睡觉</li>
+<li>[ ] 打豆豆</li>
 </ul>
-<p>代码块</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br></pre></td></tr></table></figure>
-<p>数学公式：</p>
-<p>$$<br>\frac{\partial f}{\partial x}&#x3D;2\sqrt{a}x<br>$$</p>
-<p>表格：</p>
+<p>代码块<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br></pre></td></tr></table></figure><br>数学公式：</p>
+<script type="math/tex; mode=display">
+\frac{\partial f}{\partial x}=2\sqrt{a}x</script><p>表格：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -212,7 +211,8 @@
 <th>成绩</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>KIDSSCC</td>
 <td>18</td>
 <td>100</td>
@@ -222,24 +222,32 @@
 <td>18</td>
 <td>100</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
 <p>脚注：</p>
-<p>一键三连<a href="%E7%82%B9%E8%B5%9E%EF%BC%8C%E6%8A%95%E5%B8%81%EF%BC%8C%E6%94%B6%E8%97%8F">^三连</a></p>
+<p>一键三连<sup><a href="#fn_三连" id="reffn_三连">三连</a></sup></p>
 <p>链接:<br><a href="www.baidu.com" title="一个搜索引擎">百度</a></p>
 <p>引用链接：(适用于同一链接多次出现)<br><a href="www.google.com" title="另一个搜索引擎">谷歌</a></p>
 <p>我喜欢两个搜索引擎，一个是<a href="www.google.com" title="另一个搜索引擎">谷歌</a>，另一个也是<a href="www.google.com" title="另一个搜索引擎">谷歌</a></p>
 <p>跳转到标题：</p>
-<p>请参考<a href="#%E6%A0%87%E9%A2%981">这一节</a></p>
-<p>URL:<br><a target="_blank" rel="noopener" href="https://www.baidu.com/">https://www.baidu.com</a></p>
-<p>图片：<br><img src="https://pic.sogou.com/d?query=baidu&forbidqc=&entityid=&preQuery=&rawQuery=&queryList=&st=&did=3" alt="baidu" title="百度引擎"></p>
-<p>##一些行内格式<br>斜体：<em>这是斜体文字</em><br>加粗：<strong>这是加粗文字</strong><br>下划线：<u>这是带下划线的文字</u><br>表情<a href="%5Bemoji%E5%9B%BD%E9%99%85%E8%A1%A8%E6%83%85%E9%80%9A%E7%94%A8%E4%BB%A3%E7%A0%81%5D(#https://unicode.org/emoji/charts/full-emoji-list.html)">^参考</a>：:smile:<br>行内公式：$\theta&#x3D;x^2$<br>下标：H<del>2</del>O<br>上标：x^2^<br>高亮：&#x3D;&#x3D;这是一段高亮文字&#x3D;&#x3D;</p>
+<p>请参考<a href="#标题1">这一节</a></p>
+<p>URL:<br><a target="_blank" rel="noopener" href="https://www.baidu.com">https://www.baidu.com</a></p>
+<p>图片：<br><img src="https://pic.sogou.com/d?query=baidu&amp;forbidqc=&amp;entityid=&amp;preQuery=&amp;rawQuery=&amp;queryList=&amp;st=&amp;did=3" alt="baidu" title="百度引擎"></p>
+<h2 id="一些行内格式"><a href="#一些行内格式" class="headerlink" title="一些行内格式"></a>一些行内格式</h2><p>斜体：<em>这是斜体文字</em><br>加粗：<strong>这是加粗文字</strong><br>下划线：<u>这是带下划线的文字</u><br>表情<sup><a href="#fn_参考" id="reffn_参考">参考</a></sup>：:smile:<br>行内公式：$\theta=x^2$<br>下标：H~2~O<br>上标：x^2^<br>高亮：==这是一段高亮文字==</p>
 <hr>
 <p>参考视频：</p>
 <iframe src="//player.bilibili.com/player.html?aid=327623069&bvid=BV1JA411h7Gw&cid=171385214&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 
+<blockquote id="fn_三连">
+<sup>三连</sup>. 点赞，投币，收藏<a href="#reffn_三连" title="Jump back to footnote [三连] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_参考">
+<sup>参考</sup>. <a href="#https://unicode.org/emoji/charts/full-emoji-list.html">emoji国际表情通用代码</a><a href="#reffn_参考" title="Jump back to footnote [参考] in the text."> &#8617;</a>
+</blockquote>
 
       
 
