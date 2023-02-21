@@ -152,6 +152,163 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-计算机网络" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/02/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    </h1>
+  
+
+        
+        <a href="/2023/02/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="archive-article-date">
+  	<time datetime="2023-02-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="计算机网络概述："><a href="#计算机网络概述：" class="headerlink" title="计算机网络概述："></a>计算机网络概述：</h2><p>计算机网络：将分散的，具有独立功能的计算机系统，通过通信设备和线路连接起来，通过功能完善的软件实现资源共享与信息传递</p>
+<p>​    计算机网络是互联的，自治的计算机集合</p>
+<p>计算机网络功能：</p>
+<ol>
+<li>数据通信</li>
+<li>资源共享：包括硬件资源，软件资源，数据资源</li>
+<li>分布式处理</li>
+<li>提高链路可靠性</li>
+<li>负载均衡</li>
+</ol>
+<p>计算机网络的组成：</p>
+<ol>
+<li><p>组成部分：硬件，软件，<mark>协议</mark></p>
+</li>
+<li><p>工作方式：</p>
+</li>
+</ol>
+<ul>
+<li>边缘部分：用户直接使用的设备，边缘通信的方式包括C/S，P2P</li>
+<li>核心部分：为边缘部分提供服务</li>
+</ul>
+<ol>
+<li>功能组成：</li>
+</ol>
+<ul>
+<li>通信子网：负责数据通信</li>
+<li>资源子网：实现资源共享与数据处理</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230220221410507.png" alt="OSI七层网络结构"></p>
+<p>应用层，表示层，会话层为资源子网，网络层，数据链路层，物理层为通信子网</p>
+<h2 id="性能指标："><a href="#性能指标：" class="headerlink" title="性能指标："></a>性能指标：</h2><h4 id="速率："><a href="#速率：" class="headerlink" title="速率："></a>速率：</h4><p>数据传输率/比特率</p>
+<p>连接在计算机网络中的主机在数字信道上传输数据位数的速率</p>
+<p>单位：bit/s，kb/s，Mb/s，Gb/s，Tb/s</p>
+<h4 id="带宽："><a href="#带宽：" class="headerlink" title="带宽："></a>带宽：</h4><p>原指某个信号具有的频带宽度，最高频率与最低频率的差值</p>
+<p>现指单位时间内从一点到另一点的最高数据率，单位与速率相同</p>
+<p><mark>带宽是指设备向链路中注入比特的速度，与比特在链路上传输的速度不同</mark></p>
+<h4 id="吞吐量："><a href="#吞吐量：" class="headerlink" title="吞吐量："></a>吞吐量：</h4><p>单位时间内通过某个接口或信道的数据量，单位与速率相同，</p>
+<p>带宽代表了硬件层面的极限，吞吐量是实际传输中的数据</p>
+<h4 id="时延："><a href="#时延：" class="headerlink" title="时延："></a>时延：</h4><p>数据（报文，分组，或比特流）从网络一端到网络另一段所需要的时间，</p>
+<p>单位为s</p>
+<p>时延的组成：</p>
+<ul>
+<li><p>发送时延：在链路的发送端，从第一个bit到最后一个bit上传到链路上所需要的时间，<strong>与吞吐量相关</strong></p>
+<ul>
+<li>发送时延=数据长度/信道带宽</li>
+</ul>
+</li>
+<li><p>传播时延：电磁波在链路上传播的时延</p>
+<ul>
+<li>传播时延=链路长度/电磁波在介质上的传播速率</li>
+</ul>
+</li>
+<li><p>排队时延：数据在路由器或交换机中等待的时间</p>
+</li>
+<li>处理时延：数据在路由器或交换机中进行检错和路径确认的时间</li>
+</ul>
+<h4 id="时延带宽积："><a href="#时延带宽积：" class="headerlink" title="时延带宽积："></a>时延带宽积：</h4><p>时延带宽积=传播时延*带宽</p>
+<p>单位为bit</p>
+<p>描述链路中的数据量</p>
+<h4 id="往返时间RTT"><a href="#往返时间RTT" class="headerlink" title="往返时间RTT"></a>往返时间RTT</h4><p>从发送方发送第一个bit开始，到收到接收方的确认为止（假设接收方收到数据后立即回复确认）</p>
+<p>RTT越大，在收到确认之前，可以发送的数据越多</p>
+<p>RTT的组成</p>
+<ul>
+<li>往返过程的传播时延：单次传播时延*2</li>
+<li>接收方处理时间：一般忽略不计</li>
+</ul>
+<p><mark>RTT中不包括发送时延</mark></p>
+<h4 id="利用率"><a href="#利用率" class="headerlink" title="利用率"></a>利用率</h4><ol>
+<li>信道利用率：信道上有数据通过的时间/全部时间</li>
+<li>网络利用率：各条信道的利用率加权平均</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230221162718153.png" alt="image-20230221162718153"></p>
+<h2 id="分层结构"><a href="#分层结构" class="headerlink" title="分层结构"></a>分层结构</h2><p>实体：每一层处理的元素，同一层具有对等实体</p>
+<p>协议：对等实体之间必须执行相同协议</p>
+<ul>
+<li>语法：传输数据的格式，数据包的划分语义</li>
+<li>语义：数据包的不同部分的含义</li>
+<li>同步：对于数据包的处理顺序</li>
+</ul>
+<p>接口：同一方两层之间的连接</p>
+<p>服务：下层为上层提供服务</p>
+<p><strong>计算机网络体系结构是计算机网络的各层及其协议的集合</strong></p>
+<h3 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h3><p>OSI七层模型：开放系统互连模型</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230221164454637.png" alt="image-20230221164454637"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">期末复习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/02/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MarkDown语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -540,6 +697,10 @@ MathJax.Hub.Queue(function() {
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">期末复习</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
