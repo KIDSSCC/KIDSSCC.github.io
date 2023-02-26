@@ -378,6 +378,33 @@
 <li>确定出错位数</li>
 </ul>
 <p><mark>海明码是需要构成偶数个1</mark></p>
+<h2 id="应用层协议及网络编程"><a href="#应用层协议及网络编程" class="headerlink" title="应用层协议及网络编程"></a>应用层协议及网络编程</h2><p>应用层协议使用下层传输层提供的TCP/UDP通信服务</p>
+<p>进程间通信：</p>
+<ul>
+<li>同一台主机中：OS进程间通信方式</li>
+<li>不同主机中：交换消息</li>
+</ul>
+<p>常见的进程间通信模式：C/S，P2P</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226214826208.png" alt="image-20230226214826208"></p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226214850030.png" alt="image-20230226214850030"></p>
+<p>C/S与P2P也可混合应用</p>
+<h4 id="进程标识符"><a href="#进程标识符" class="headerlink" title="进程标识符"></a>进程标识符</h4><p>包括IP地址和端口号，IP地址一个主机一个（32位的IPV4或者128位的IPV6）</p>
+<h4 id="应用对传输层的要求"><a href="#应用对传输层的要求" class="headerlink" title="应用对传输层的要求"></a>应用对传输层的要求</h4><p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226215235346.png" alt="image-20230226215235346"></p>
+<p>传输层提供的服务：</p>
+<ul>
+<li>TCP:面向连接，可靠传输，流量控制，拥塞控制，不保证时延和带宽，</li>
+<li>UDP：不提供上面的所有，</li>
+</ul>
+<p>常见应用使用TCP较多，流媒体和网络电话也可以使用UDP，</p>
+<h4 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h4><p>数据报套接字：使用UDP协议，</p>
+<p>流式套接字：使用TCP协议（全双工字节流传输）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">WSAStartUp，初始化Socker DLL，</span><br><span class="line">WSACleanUp：结束使用Socket，释放DLL资源</span><br><span class="line">Socket（）：包含地址类型，服务类型（TCP/UDP），协议</span><br><span class="line">bind：将一个本地地址绑定在socket对象上，</span><br><span class="line">listen：进入监听状态，需要指定socket对象和等待队列的最大长度</span><br><span class="line">connect：和bind参数类似，向一个特定的socket发出连接请求</span><br><span class="line">accept：接收一个特定socket请求等待队列中的连接请求，使用后会进入到阻塞状态</span><br><span class="line">sendto：向特定的目的地发送数据</span><br><span class="line">recvfrom：从一个特定的目的地接收数据</span><br><span class="line">SOCKADDR</span><br><span class="line">SOCKADDR_IN</span><br></pre></td></tr></table></figure>
+<p>send和recv用于TCP，需要已经建立连接，</p>
+<p>sendto与recvfrom用于UDP，需要指定发送和接收的地址</p>
+<h4 id="字典序"><a href="#字典序" class="headerlink" title="字典序"></a>字典序</h4><p>Big_Endian:高位字节放在内存的低地址处</p>
+<p>Little_Endian：高位字节放在内存的高地址处</p>
+<p>是以字节为单位，字节本身的8为bit还是正常的顺序</p>
+<p>x86是Little，ARM既可以工作在Little也可以工作在Big，网络通信中使用Big</p>
 
       
 
