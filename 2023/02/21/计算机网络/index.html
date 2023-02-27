@@ -26,8 +26,12 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226214826208.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226214850030.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226215235346.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226225250839.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226230424231.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226232208767.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226232218056.png">
 <meta property="article:published_time" content="2023-02-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-02-26T14:10:37.940Z">
+<meta property="article:modified_time" content="2023-02-26T15:32:05.327Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="期末复习">
 <meta name="twitter:card" content="summary">
@@ -420,6 +424,57 @@
 <p>Little_Endian：高位字节放在内存的高地址处</p>
 <p>是以字节为单位，字节本身的8为bit还是正常的顺序</p>
 <p>x86是Little，ARM既可以工作在Little也可以工作在Big，网络通信中使用Big</p>
+<h4 id="域名系统"><a href="#域名系统" class="headerlink" title="域名系统"></a>域名系统</h4><p>每台主机有一个或多个名字</p>
+<p>域名和地址的映射：</p>
+<ul>
+<li>早期集中式管理：本地存储Hosts文件，实现静态映射，通过FTP服务为接入互联网的主机提供域名的发布和下载</li>
+</ul>
+<p>DNS：域名系统</p>
+<p>​    域名和地址的映射关系分布式存放，形成分布式数据库系统</p>
+<p>​    域名的解析：分布式，有效性（大多数解析在本地完成），可靠性（冗余设置，避免单点失效）。</p>
+<p>域名的解析采用C/S模式：</p>
+<ul>
+<li>域名服务器：保存域名和地址的映射关系，接收客户端的请求，并给出响应</li>
+<li>域名解析器：位于客户端，向域名解析器发起解析请求</li>
+</ul>
+<p>DNS服务器组织：</p>
+<ol>
+<li>顶级域名服务器：TLD：负责顶级域名的解析</li>
+<li>授权域名服务器：保存某条映射关系其原始数据来源的服务器，<mark>区分某条映射是原始的还是被缓存的</mark></li>
+<li>本地域名服务器：域名解析的起点</li>
+</ol>
+<p>解析过程可以分为反复解析与递归解析</p>
+<p>反复解析即始终由本地域名服务器发出请求。获得对应的回复后继续向下一级域名服务器发起解析请求</p>
+<p>递归解析即本地域名服务器发出请求后，由下一级域名服务器继续发起解析工作</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226225250839.png" alt="image-20230226225250839"></p>
+<p>DNS域名服务器可以设置缓存，来降低解析非本地映射关系的开销</p>
+<p>当服务器学习到某个名字和地址的映射关系时，便进行缓存，同时记录下该条映射关系是从何处获取的</p>
+<p>基于授权服务器（即真正提供该映射关系的服务器）中的TTL值设置超时时间，缓存的映射关系经过一定时间会超时</p>
+<p>TLD服务器通常会被本地域名服务器缓存。（本地域名服务器发起解析时，先向根服务器发起请求，再向TLD发起请求，）将TLD进行缓存，可以有效降低根服务器的访问频度</p>
+<p>在进行了缓存的情况下，本地域名服务器向主机提供解析结果时，会标注该结果为非授权结果，并给出获取映射的服务器的域名和IP地址。在注重效率的情况下，客户端可以直接接收该结果。在注重准确性的情况下，可以由客户机再联系授权服务器验证有效性</p>
+<p><strong>在DNS缓存以外，也可以设置主机缓存</strong></p>
+<p>主机在启动时从本地域名服务器中下载映射关系数据库，定期获取新的映射</p>
+<p>可以降低服务器的负载压力，提高解析的效率，同时，本地域名服务器损坏后也不影响域名解析的过程</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226230424231.png" alt="image-20230226230424231"></p>
+<h4 id="电子邮件服务和协议"><a href="#电子邮件服务和协议" class="headerlink" title="电子邮件服务和协议"></a>电子邮件服务和协议</h4><p>电子邮件系统使用SMTP协议</p>
+<p>分为用户接口和邮件服务器</p>
+<p>用户接口用于编辑邮件，没有特定的标准，邮件服务器中保存收到的邮件以及消息的发送队列</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226232208767.png" alt="image-20230226232208767"></p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226232218056.png" alt="image-20230226232218056"></p>
+<p>SMTP：简单邮件传输协议，利用TCP可靠地在服务器之间传递邮件</p>
+<p>三个阶段：</p>
+<ul>
+<li>连接建立</li>
+<li>邮件传送</li>
+<li>连接关闭</li>
+</ul>
+<p>FTP：文件传输协议</p>
+<p>FTP协议基于TCP/IP，采用C/S模式，从远端的文件系统中获取文件或上传邮件</p>
+<p>FTP中包括控制连接和数据连接，二者不是一条线，控制21端口，数据20端口，（端口仅在服务端是限定的，在客户端是随机端口）控制连接维持一个FTP会话，数据连接在一个会话上传输多个请求，每个请求建立一个数据连接，数据传输结束后即释放</p>
+<h4 id="Web服务于HTTP协议"><a href="#Web服务于HTTP协议" class="headerlink" title="Web服务于HTTP协议"></a>Web服务于HTTP协议</h4><p>远端服务器中存储Web页面，包含到各种对象的链接，对象可以是文档，图像等各种资源，对象统一使用url来进行编址</p>
+<p>客户端负责发出请求，接收响应并通过HTML解释器解释HTML文档</p>
+<p><strong>HTTP协议</strong></p>
+<p>TCP协议，缺省使用80端口</p>
 
       
 
