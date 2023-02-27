@@ -30,8 +30,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226230424231.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226232208767.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230226232218056.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227090743514.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227090800610.png">
 <meta property="article:published_time" content="2023-02-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-02-26T15:32:05.327Z">
+<meta property="article:modified_time" content="2023-02-27T01:37:32.053Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="期末复习">
 <meta name="twitter:card" content="summary">
@@ -475,6 +477,46 @@
 <p>客户端负责发出请求，接收响应并通过HTML解释器解释HTML文档</p>
 <p><strong>HTTP协议</strong></p>
 <p>TCP协议，缺省使用80端口</p>
+<p>http为无状态协议，不保留之前请求的状态，每次访问需要重新建立连接</p>
+<p>http1.0：非持久连接，获得每一个对象都需要重新建立连接，获取后再关闭连接，每次连接都要经历TCP慢启动阶段。</p>
+<p>http1.1：持久连接，在同一个TCP链接上，可以接收多次请求，http1.1还支持了流水线机制</p>
+<p>​    在不进行流水线的情况下，发出一个请求，需要等收到回复后再发送下一个请求，</p>
+<p>​    流水线的情况下，可以在没有回复的情况下发送多个请求</p>
+<h5 id="报文类型"><a href="#报文类型" class="headerlink" title="报文类型"></a>报文类型</h5><p>http两种报文，请求报文和响应报文</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227090743514.png" alt="image-20230227090743514"></p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227090800610.png" alt="image-20230227090800610"></p>
+<p>请求报文中请求方法包括get，post，put，delete，head其中put和post的请求方法要求报文额外包含请求体</p>
+<h5 id="用户服务器交互"><a href="#用户服务器交互" class="headerlink" title="用户服务器交互"></a>用户服务器交互</h5><p>对于服务器：在http无状态协议下，每次请求都需要包含认证（由名字+口令组成），如果请求中没有认证，则服务器拒绝访问</p>
+<p>对于客户端：服务器的响应报文中会包含set-cookie，客户端根据此项信息在主机中设置自己的cookie，在后继的http请求中使用cookie，服务器可以根据cookie来标识用户信息</p>
+<h5 id="客户端缓存"><a href="#客户端缓存" class="headerlink" title="客户端缓存"></a>客户端缓存</h5><p>客户端收到某个对象后会在主机中缓存该对象并记录缓存时间，当再次请求该对象是时，请求报文中包含自己上一次缓存该对象的时间，由服务器来判断自缓存时间过后对象有无发生修改。</p>
+<ul>
+<li>对象没有发生修改：回复304，响应报文中不需要包含该对象了</li>
+<li>对象发生了修改，则重新发送该对象</li>
+</ul>
+<h5 id="代理服务器缓存："><a href="#代理服务器缓存：" class="headerlink" title="代理服务器缓存："></a>代理服务器缓存：</h5><p>网络中设置代理服务器，其中缓存了原始服务器的一部分对象，浏览器将所有请求先发送至代理服务器，</p>
+<ul>
+<li>如果缓存中有该对象，则直接返回</li>
+<li>缓存中没有该对象，则由代理服务器向原始服务器发起请求</li>
+</ul>
+<p>继http1.1流水线之后，</p>
+<p>http+TLS：    通过TLS连接提供安全机制，</p>
+<p>http2.0：提高带宽，降低时延</p>
+<p>http3.0：运行在UDP之上</p>
+<h3 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h3><p>http1.1存在队头阻塞的问题，虽然是流水线但还是有序的响应，即先请求的必须先响应，队头容易发生阻塞</p>
+<p>同时传输效率有一定的问题，头部重复且冗长</p>
+<p>对于队头阻塞的问题，可以通过建立多个TCP连接来实现，一般最多建立6个，不同连接之间响应没有次序要求</p>
+<p>http2.0采用二进制分帧的传输，将原有的请求和响应报文切分为帧，采用二进制编码</p>
+<p>tcp连接复用：</p>
+<ul>
+<li>http2.0中一次请求和响应包含多个帧，</li>
+<li>流：可以视为一次请求+响应中传输的帧</li>
+<li>连接复用：不同流的帧可以在同一个连接中交替传输</li>
+</ul>
+<p>流通过id进行标识，每条连接中能够容纳的流的数量有上限</p>
+<p>服务器推送：在请求之前先推送响应信息给客户端，客户端可以进行缓存</p>
+<p>头压缩：通过静态表和动态表来保存完整的头信息，在报文中只包含对应的索引</p>
+<h3 id="内容分发网络CDN"><a href="#内容分发网络CDN" class="headerlink" title="内容分发网络CDN"></a>内容分发网络CDN</h3><p>http重定向，原始服务器将内容复制缓存到CDN服务器中，在收到用户请求时进行重定向，状态码30X，并指明CDN服务器的地址，由CDN服务器来完成完整的响应</p>
+<p>负载均衡：由负载均衡DNS来决策选择当前负载最低的CDN服务器</p>
 
       
 
