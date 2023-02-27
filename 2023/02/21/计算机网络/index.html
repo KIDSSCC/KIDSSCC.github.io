@@ -40,8 +40,19 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227182756460.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227183131368.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227183213880.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227184754816.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227185928875.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227190418371.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227191930483.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227193502949.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227193521050.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227193809538.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227194107009.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227194522011.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227200217762.png">
+<meta property="og:image" content="c:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20230227214002399.png">
 <meta property="article:published_time" content="2023-02-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-02-27T10:36:47.906Z">
+<meta property="article:modified_time" content="2023-02-27T13:45:03.913Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="期末复习">
 <meta name="twitter:card" content="summary">
@@ -567,6 +578,103 @@
 <li>rdt3.0：假设下层信道不仅会发生位错误，同时也会丢失分组</li>
 </ul>
 <p>需要通过定时器的设置，超时重传</p>
+<p>发送端：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227184754816.png" alt="image-20230227184754816"></p>
+<p>rdt3.0中，在收到了错误的回复报文或ACK但序号错误时，不再直接进行重发，而是等待超时时间结束后再重发</p>
+<p>实现了可靠机制，但存在性能问题，对rdt3.0的性能优化，引入流水线协议</p>
+<h4 id="流水线机制"><a href="#流水线机制" class="headerlink" title="流水线机制"></a>流水线机制</h4><ol>
+<li>GBN：回退N</li>
+</ol>
+<p>允许发送端发出N个未得到确认的分组，采用累计确认，只确认连续正确接收到的分组的最大序列号，因此发送端可能会收到重复的ACK</p>
+<p>定时器超时时，重传所有未得到确认的分组</p>
+<p>发送端扩展</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227185928875.png" alt="image-20230227185928875"></p>
+<p>在发送新的分组时，如果base==nextseqnum，说明当前是窗口中的第一个分组，需要启动计时器。否则，说明窗口中已经有了一些在等待确认的分组，且当前计时器是根据已经存在的第一个分组设置了，因此不需要对计时器进行操作</p>
+<p>在收到ACK确认时，将移动窗口（base改变）如果当前的base=nextseqnum了，说明当前窗口中的所有分组都已经发完了（因为nextseqnum是下一次发送时的分组序号）停止计时器。否则，说明窗口中还有没发完的分组，则重置计时器，继续开始计时</p>
+<p>接收端扩展状态机：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227190418371.png" alt="image-20230227190418371"></p>
+<ol>
+<li>选择重传：SR</li>
+</ol>
+<p>接收端独立确认每个正确接收的分组，必要时进行缓存，对应用层按序进行交付</p>
+<ul>
+<li><p>发送端：</p>
+<ul>
+<li><p>收到应用层的发送请求时，如果窗口中还有可用的需要，则进行编号，发送分组，启动计时器</p>
+<p>窗口中某个分组发生了超时，进行重传，并启动计时器，</p>
+<p>收到了某个序号的ACK，如果该序号在窗口内，则标记该分组已收到，如果该序号为窗口中最小，则窗口继续移动</p>
+</li>
+</ul>
+</li>
+<li><p>接收端：</p>
+<ul>
+<li>接收到了某个序号为n的分组，若在[base,base+N-1]中，缓存分组，窗口滑动</li>
+<li>若在[base-N,base-1]中，发送ACK</li>
+</ul>
+</li>
+</ul>
+<p>TCP协议</p>
+<ul>
+<li>可靠传输机制：差错检测，分组丢失，乱序，超时重传，流水线，自适应窗口</li>
+<li>面向连接：三次握手</li>
+<li>分用复用</li>
+<li>流量控制</li>
+<li>拥塞控制</li>
+</ul>
+<p>tcp数据报：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227191930483.png" alt="image-20230227191930483"></p>
+<p>其中的头长度以4个字节为单位，记录自确认序号结束至数据之间的部分的长度</p>
+<p>接收窗口通告：指示接收端缓冲区还可以接收的字节数</p>
+<p>三次握手的过程中用于进行缓冲区的分配，发送序号与确认序号的初始化，</p>
+<p>连接标识：源IP，目的IP，源端口号，目的端口号</p>
+<p>在目的Ip与目的端口号均相同的情况下，因为源IP或者源端口号的不同，也会指向同一目的主机的不同套接字口</p>
+<p>MSS:最大段长度</p>
+<p>代表了发送缓冲区中存在多少字节时会封装为段进行发送</p>
+<h4 id="TCP的可靠数据传输："><a href="#TCP的可靠数据传输：" class="headerlink" title="TCP的可靠数据传输："></a>TCP的可靠数据传输：</h4><p>发送端：发送数据，等待确认，超时重传</p>
+<p>接收端：差错检测，累计重传，与GBN不同的时，TCP累计重传中回复的是要接收的下一个字节的序号</p>
+<p>在TCP的流水线机制下，发送序号和接收序号均为32位，每个字节都有自己的序列号，在发送时发送序号是当前段的第一个字节的序号，接收端回复的接收序号是预计接收的下一个字节的序号</p>
+<p>发送端动作：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227193502949.png" alt="image-20230227193502949"></p>
+<p>接收端动作:</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227193521050.png" alt="image-20230227193521050"></p>
+<p><mark>此处有关TCP的重传场景，第三章P58</mark></p>
+<p><strong>对于TCP超时时间的考量</strong></p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227193809538.png" alt="image-20230227193809538"></p>
+<p>TCP中的超时重传时间采用自适应的方法进行计算。</p>
+<p>在发送报文段1的时候，根据其收到ACK的时间可以得到报文段1的RTT时间，在发送报文段2时，预估其也将在报文段1的RTT时间左右收到回复，在预估的基础上又增加了一部分保护带，最终形成了关于报文段2的重传超时时间RTO</p>
+<p>基本RTT的估算算法</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227194107009.png" alt="image-20230227194107009"></p>
+<p>对网络时延的估算算法：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227194522011.png" alt="image-20230227194522011"></p>
+<p>快速重传：三次重复ACK</p>
+<p>TCP的选择确认：可以在选项部分通告是否支持选择确认，</p>
+<p>在选择确认下，块参数边界包含4字节的序号，左边界为不连续的块的第一个字节的序号，右边界为不连续块的最后一个字节的下一个序号该参数包含在回复报文中由接收端发送给发送端</p>
+<p>TCP流量控制：</p>
+<p>接收端利用接收窗口通告来告知发送端，我还剩多少可用的缓冲区，发送端根据该通告，来动态的调整发送窗口的大小</p>
+<p>流量约束：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227200217762.png" alt="image-20230227200217762"></p>
+<p>对于接收端来说，MaxRcvBuffer是自己能够缓存的最大数据量，LastByteRead是已经被应用进程读走的数据，NextByteExp是目前已经收到的字节。二者的差值就是目前已经被接收端收到但还仍未被应用进程读走所以必须由接收端进行缓存。MaxRcvBUffer减去这个值就是当前接收端还可以缓存的大小。作为接收窗口通告发送回去。</p>
+<p>对于发送端来说，LatByteSent-LastByteAck是当前已经发出但还没有收到确认的部分，这部分没有收到确认的原因可能是因为并不连续，因此这部分内容都是需要接收端缓存下来的，所以其应该小于通告窗口的大小。当前的有效窗口也随即得到</p>
+<p>LastByteWritten-LastByteAck中包含两部分内容。一部分是已经发送但未得到确认的，一部分是存入缓存中还没有发送的。二者都占用缓存。因此总的大小需要小于发送缓冲区大小</p>
+<p>较小的缓冲区会影响网络的吞吐率，</p>
+<p>较大的缓冲区会浪费主机的存储资源</p>
+<h4 id="网络拥塞："><a href="#网络拥塞：" class="headerlink" title="网络拥塞："></a>网络拥塞：</h4><p>主机发送的数据过多或过快，造成网络中的路由器或其他设备无法及时处理，从而造成时延或丢弃</p>
+<p>拥塞控制方法：</p>
+<ol>
+<li>端到端拥塞控制：</li>
+</ol>
+<p>网络中无明显的反馈，端系统无法直接感知到网络中路由器的状态，只能通过观察丢失和延迟来判断是否发生了拥塞</p>
+<ol>
+<li>网络辅助的拥塞控制</li>
+</ol>
+<p>路由器可以给端系统提供反馈</p>
+<p>TCP拥塞控制：</p>
+<p>带宽探测：收到ACK提高传输速率，发生丢失事件降低传输速率</p>
+<p>TCP拥塞控制窗口：</p>
+<p><img src="C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20230227214002399.png" alt="image-20230227214002399"></p>
+<p>TCP拥塞控制：</p>
+<p>慢启动阶段：初始窗口大小为1，每收到一个ACK窗口大小增长1，等价于每个RTT窗口大小翻一倍，</p>
+<p>拥塞避免阶段：拥塞窗口达到阈值后，进入拥塞避免阶段，每个RTT，窗口大小增长1，等价于收到多个ACK后窗口大小才增长1</p>
 
       
 
