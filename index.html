@@ -496,7 +496,49 @@
 <p>头压缩：通过静态表和动态表来保存完整的头信息，在报文中只包含对应的索引</p>
 <h3 id="内容分发网络CDN"><a href="#内容分发网络CDN" class="headerlink" title="内容分发网络CDN"></a>内容分发网络CDN</h3><p>http重定向，原始服务器将内容复制缓存到CDN服务器中，在收到用户请求时进行重定向，状态码30X，并指明CDN服务器的地址，由CDN服务器来完成完整的响应</p>
 <p>负载均衡：由负载均衡DNS来决策选择当前负载最低的CDN服务器</p>
-<h2 id="传输层协议"><a href="#传输层协议" class="headerlink" title="传输层协议"></a>传输层协议</h2>
+<h2 id="传输层协议"><a href="#传输层协议" class="headerlink" title="传输层协议"></a>传输层协议</h2><p>传输层协议基本功能：</p>
+<ul>
+<li>复用和分用：两个进程的数据报从同一个通道发出去，从同一个通道收入的数据报正确的分发给两个进程</li>
+<li>可靠传输</li>
+</ul>
+<p>UDP数据报格式：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227164711562.png" alt="image-20230227164711562"></p>
+<p>UDP的差错检测</p>
+<p>包含伪首部和数据部分的差错校验，</p>
+<p>伪首部：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227180306111.png" alt="image-20230227180306111"></p>
+<p>计算校验和时包括伪首部，UDP头部和数据部分，（UDP头部中的校验和部分初始化为0），发送时取反，接收端不用</p>
+<p>校验和计算结果为0时以全1代替，使用伪首部的目的在于检验UDP数据报是否真正到达了目的地，伪首部不随数据包发送</p>
+<h4 id="UDP上的可靠传输"><a href="#UDP上的可靠传输" class="headerlink" title="UDP上的可靠传输"></a>UDP上的可靠传输</h4><p>应用层视下层为可靠信道。传输层必须假设下层信道为不可靠信道</p>
+<ul>
+<li>rdt1.0：假设下层信道完全可靠，不会发生任何错误，一边直接发，一边直接收</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227181531747.png" alt="image-20230227181531747"></p>
+<ul>
+<li>rdt2.0：假设数据中会出现错误，接收端需要能进行差错检测并通知发送端，发送端选择进行重传或者继续发送</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227181733852.png" alt="image-20230227181733852"></p>
+<ul>
+<li>rdt2.1：认为ACK与NAK在传输过程中也会发生错误</li>
+</ul>
+<p>此时，发送端将无法正确识别发送结果，如果直接进行重复发送，会导致接收端接收到重复的数据报，接收端需要能进行重复的检测</p>
+<p>rdt2.1中额外对ACK和NAK字段增加了校验</p>
+<p>发送端状态：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227182013951.png" alt="image-20230227182013951"></p>
+<p>接收端状态：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227182756460.png" alt="image-20230227182756460"></p>
+<ul>
+<li>rdt2.2：对rdt2.1的改进，取消了NAK，在ACK报文中包含当前确认的报文的序号。收到重复的ACK代表对当前分组的NAK</li>
+</ul>
+<p>发送端：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227183131368.png" alt="image-20230227183131368"></p>
+<p>接收端：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230227183213880.png" alt="image-20230227183213880"></p>
+<ul>
+<li>rdt3.0：假设下层信道不仅会发生位错误，同时也会丢失分组</li>
+</ul>
+<p>需要通过定时器的设置，超时重传</p>
+
       
 
       
