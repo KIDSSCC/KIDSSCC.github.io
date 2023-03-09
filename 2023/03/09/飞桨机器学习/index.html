@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>飞桨机器学习 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="海量文件遍历">
+  <meta name="description" content="海量文件遍历1!tree -L 3 .&#x2F;data&#x2F; 前缀的！表示在当前的命令行中执行一条系统命令tree， tree命令后-L选项可以指定向下查看的文件层数，如上的-L 3即向下查看三层 一些命令选项：     命令选项 含义     -C 区分出文件夹和文件，将二者以不同颜色进行标识   -p 列出文件的权限   -f 列出文件的相对路径   -d 只列出目录，不显示文件      123456">
 <meta property="og:type" content="article">
 <meta property="og:title" content="飞桨机器学习">
 <meta property="og:url" content="http://example.com/2023/03/09/%E9%A3%9E%E6%A1%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="海量文件遍历">
+<meta property="og:description" content="海量文件遍历1!tree -L 3 .&#x2F;data&#x2F; 前缀的！表示在当前的命令行中执行一条系统命令tree， tree命令后-L选项可以指定向下查看的文件层数，如上的-L 3即向下查看三层 一些命令选项：     命令选项 含义     -C 区分出文件夹和文件，将二者以不同颜色进行标识   -p 列出文件的权限   -f 列出文件的相对路径   -d 只列出目录，不显示文件      123456">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-08T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-09T12:29:05.382Z">
+<meta property="article:modified_time" content="2023-03-09T13:20:50.603Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="百度松果">
 <meta name="twitter:card" content="summary">
@@ -175,7 +175,84 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="海量文件遍历"><a href="#海量文件遍历" class="headerlink" title="海量文件遍历"></a>海量文件遍历</h1>
+        <h1 id="海量文件遍历"><a href="#海量文件遍历" class="headerlink" title="海量文件遍历"></a>海量文件遍历</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!tree -L <span class="number">3</span> ./data/</span><br></pre></td></tr></table></figure>
+<p>前缀的！表示在当前的命令行中执行一条系统命令tree，</p>
+<p>tree命令后-L选项可以指定向下查看的文件层数，如上的-L 3即向下查看三层</p>
+<p>一些命令选项：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-C</td>
+<td>区分出文件夹和文件，将二者以不同颜色进行标识</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>列出文件的权限</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>列出文件的相对路径</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>只列出目录，不显示文件</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">unzip_data</span>(<span class="params">src_path,target_path</span>):</span><br><span class="line">    <span class="comment"># 解压原始数据集，将src_path路径下的zip包解压至target_path目录下</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">not</span> os.path.isdir(target_path)):     </span><br><span class="line">        z = zipfile.ZipFile(src_path, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">        z.extractall(path=target_path)</span><br><span class="line">        z.close()</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">unzip_data(<span class="string">&#x27;data/data10954/cat_12_test.zip&#x27;</span>,<span class="string">&#x27;data/data10954/cat_12_test&#x27;</span>)</span><br><span class="line">unzip_data(<span class="string">&#x27;data/data10954/cat_12_train.zip&#x27;</span>,<span class="string">&#x27;data/data10954/cat_12_train&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>文件解压函数，参数为源文件的路径和输出的目标路径</p>
+<p>os是python中的一个用于和操作系统进行交互的库，可以进行文件的路径操作，进程管理，环境参数，文件目录等信息的获取与处理，在本次中主要涉及到os.path子库，主要用于处理文件的路径信息</p>
+<p>zipfile是python中的一个用于处理zip格式压缩文件的库，主要可以对zip文件进行读取，写入，提取等工作，其中的Zipfile函数用于创建一个zip文件或者打开一个已有的zip文件，第一个参数为文件的路径，第二个参数为打开的具体权限，包括：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>打开权限</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>‘r’</td>
+<td>只读打开</td>
+</tr>
+<tr>
+<td>‘w’</td>
+<td>可写打开</td>
+</tr>
+<tr>
+<td>‘a’</td>
+<td>添加</td>
+</tr>
+<tr>
+<td>‘x’</td>
+<td>创建一个zip</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>zipfile库中的extractall函数用于提取一个zip压缩文件中的所有内容</p>
+<p>如上的函数完成了对一个压缩文件的打开和提取工作，提取到了目标文件夹,调用函数完成了对训练集和测试集的解压缩</p>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">通过给定目录，统计所有的不同子文件类型及占用内存</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">size_dict = &#123;&#125;</span><br><span class="line">type_dict = &#123;&#125;</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_size_type</span>(<span class="params">path</span>):</span><br><span class="line">    </span><br><span class="line">    files = os.listdir(path)</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> files:</span><br><span class="line">        temp_path = os.path.join(path, filename)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(temp_path):</span><br><span class="line">            <span class="comment"># 递归调用函数，实现深度文件名解析</span></span><br><span class="line">            get_size_type(temp_path)     </span><br><span class="line">        <span class="keyword">elif</span> os.path.isfile(temp_path):</span><br><span class="line">            <span class="comment"># 获取文件后缀</span></span><br><span class="line">            type_name=os.path.splitext(temp_path)[<span class="number">1</span>]   </span><br><span class="line">            <span class="comment">#无后缀名的文件</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> type_name:</span><br><span class="line">                type_dict.setdefault(<span class="string">&quot;None&quot;</span>, <span class="number">0</span>)</span><br><span class="line">                type_dict[<span class="string">&quot;None&quot;</span>] += <span class="number">1</span></span><br><span class="line">                size_dict.setdefault(<span class="string">&quot;None&quot;</span>, <span class="number">0</span>)</span><br><span class="line">                size_dict[<span class="string">&quot;None&quot;</span>] += os.path.getsize(temp_path)</span><br><span class="line">            <span class="comment"># 有后缀的文件</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                type_dict.setdefault(type_name, <span class="number">0</span>)</span><br><span class="line">                type_dict[type_name] += <span class="number">1</span></span><br><span class="line">                size_dict.setdefault(type_name, <span class="number">0</span>)</span><br><span class="line">                <span class="comment"># 获取文件大小</span></span><br><span class="line">                size_dict[type_name] += os.path.getsize(temp_path)  </span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<p>os库中的listdir函数，可以列出自根目录下所有的文件</p>
+<p>os.path库中的join函数，负责形成新的相对路径，如果是文件夹，则会继续进行递归遍历，如果是文件的话，则开始进行统计</p>
+<p>splitext函数，专门用于分割文件的文件名和扩展名，其返回一个元组，[0]为文件的文件名，[1]为文件的扩展名</p>
+<p>setdefault用于python中的字典操作，向字典中插入一个键值对，如果对应的键不存在的话，就插入新的键值对，如果对应的键已经存在的话，则不进行插入</p>
+<p>如上的函数可将给定目录下的所有文件按照后缀名进行分类，并统计各类文件的大小</p>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">path= <span class="string">&quot;data/&quot;</span></span><br><span class="line">get_size_type(path)</span><br><span class="line"><span class="keyword">for</span> each_type <span class="keyword">in</span> type_dict.keys():</span><br><span class="line">    <span class="built_in">print</span> (<span class="string">&quot;%5s下共有【%5s】的文件【%5d】个,占用内存【%7.2f】MB&quot;</span> %     </span><br><span class="line">            (path,each_type,type_dict[each_type],\</span><br><span class="line">            size_dict[each_type]/(<span class="number">1024</span>*<span class="number">1024</span>)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;总文件数:  【%d】&quot;</span>%(<span class="built_in">sum</span>(type_dict.values())))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;总内存大小:【%.2f】GB&quot;</span>%(<span class="built_in">sum</span>(size_dict.values())/(<span class="number">1024</span>**<span class="number">3</span>)))</span><br></pre></td></tr></table></figure>
+<p>格式化输出中%5s代表输出指定的字符串。其长度小于5时，右对齐以空格占位，长度大于等于5时则没有特殊限制。%d输出整数，%f输出小数，%后的7仍为占位符，.2代表输出的小数保留小数点后两位</p>
+
       
 
       
