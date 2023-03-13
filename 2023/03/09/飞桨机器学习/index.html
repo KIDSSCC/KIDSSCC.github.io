@@ -16,7 +16,7 @@
 <meta property="og:description" content="海量文件遍历1!tree -L 3 .&#x2F;data&#x2F; 前缀的！表示在当前的命令行中执行一条系统命令tree， tree命令后-L选项可以指定向下查看的文件层数，如上的-L 3即向下查看三层 一些命令选项：     命令选项 含义     -C 区分出文件夹和文件，将二者以不同颜色进行标识   -p 列出文件的权限   -f 列出文件的相对路径   -d 只列出目录，不显示文件      123456">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-08T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-10T12:16:56.494Z">
+<meta property="article:modified_time" content="2023-03-13T16:03:22.189Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="百度松果">
 <meta name="twitter:card" content="summary">
@@ -283,6 +283,41 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculate</span>(<span class="params">n1, n2, operator</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    :param n1: float</span></span><br><span class="line"><span class="string">    :param n2: float</span></span><br><span class="line"><span class="string">    :param operator: + - * /</span></span><br><span class="line"><span class="string">    :return: float</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> operator == <span class="string">&quot;+&quot;</span>:</span><br><span class="line">        result = n1 + n2</span><br><span class="line">    <span class="keyword">if</span> operator == <span class="string">&quot;-&quot;</span>:</span><br><span class="line">        result = n1 - n2</span><br><span class="line">    <span class="keyword">if</span> operator == <span class="string">&quot;*&quot;</span>:</span><br><span class="line">        result = n1 * n2</span><br><span class="line">    <span class="keyword">if</span> operator == <span class="string">&quot;/&quot;</span>:</span><br><span class="line">        result = n1 / n2</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
 <h2 id="3-获得最终运算结果"><a href="#3-获得最终运算结果" class="headerlink" title="3.获得最终运算结果"></a>3.获得最终运算结果</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    formula = <span class="built_in">input</span>(<span class="string">&#x27;请输入：\n&#x27;</span>)</span><br><span class="line">    <span class="comment"># formula = &quot;1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3)/ (16-3*2))&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;算式：&quot;</span>, formula)</span><br><span class="line">    formula_list = formula_format(formula)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;formula_list&quot;</span>,formula_list)</span><br><span class="line">    result, _ = final_calc(formula_list)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;计算结果：&quot;</span>, result[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
 <p>最终操作数栈中会剩余一个元素，即最终的运算结果</p>
+<hr>
+<h1 id="图像直方图统计"><a href="#图像直方图统计" class="headerlink" title="图像直方图统计"></a>图像直方图统计</h1><h3 id="1-灰度图与RGB"><a href="#1-灰度图与RGB" class="headerlink" title="1.灰度图与RGB"></a>1.灰度图与RGB</h3><p>RGB彩色图像，每个像素点都由三个通道的色彩R，G，B共同组成。每一个通道的取值范围为0-255，（0，0，0）为黑色，（255，255，255）为白色，三个通道每个通道的值都以8位来保存，即每个像素点共需要24位。一个m*n大小的图像在三通道表示下为3*m*n.</p>
+<p>灰度图像为单通道。每个像素点仅由一个灰度值代表。将黑色与白色之间分为256份，0为黑色，255为白色。也采用8位保存，表示为1*m*n</p>
+<h3 id="2-图像读入与处理"><a href="#2-图像读入与处理" class="headerlink" title="2.图像读入与处理"></a>2.图像读入与处理</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;data/nezha.jpeg&#x27;</span>,<span class="number">1</span>)</span><br><span class="line"><span class="comment"># img_np = np.array(img) </span></span><br><span class="line">plt.hist(img.reshape([-<span class="number">1</span>]),<span class="number">256</span>,[<span class="number">0</span>,<span class="number">256</span>]);</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>openCV是开源计算机视觉库，其中提供了诸多图像处理api。其在python中的接口为cv2，</p>
+<p>cv2.imread用于读取图片文件，其第二个参数代表了读取时的文件格式：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cv2.IMREAD_COLOR</td>
+<td>1</td>
+<td>读取彩色图像，读取结果为三通道</td>
+</tr>
+<tr>
+<td>cv2.IMREAD_GRAYSCALE</td>
+<td>0</td>
+<td>读取灰度图像，读取结果为1通道</td>
+</tr>
+<tr>
+<td>cv2.IMREAD_UNCHANGED</td>
+<td>-1</td>
+<td>读取原始图像，如果有alpha（透明度）通道的话一并读入，读取结果可能为4通道，可能为3通道</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>plt.hist用于进行直方图的绘制，主要包含三个参数，第一个参数为原始数据，需要为1维数据，这里采用reshape([-1])的形式将原有的三通道数据转换为了一维数据。第二个参数代表了bins的数量，即图像中需要有多少个直方。最后的一个数据对即数据的范围，即横轴的范围，在这里就是把0-256的数据分成了256个bins，最终绘制出的是256个直方</p>
 
       
 
