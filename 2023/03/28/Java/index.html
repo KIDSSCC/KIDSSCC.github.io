@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023/3 | Hexo</title>
+  <title>Java | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/03/index.html">
+  <meta name="description" content="来源：How2J的Java教程 Java中的类一个类需要定义再一个单独的Java文件中。一个类可以拥有自己的属性，自己的方法 123456789101112131415161718192021222324252627public class Hero &amp;#123;    String name;    float hp;    float armor;    int moveSpeed;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java">
+<meta property="og:url" content="http://example.com/2023/03/28/Java/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="来源：How2J的Java教程 Java中的类一个类需要定义再一个单独的Java文件中。一个类可以拥有自己的属性，自己的方法 123456789101112131415161718192021222324252627public class Hero &amp;#123;    String name;    float hp;    float armor;    int moveSpeed;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-28T13:50:46.000Z">
+<meta property="article:modified_time" content="2023-03-28T14:09:32.181Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,87 +154,187 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Java" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Java
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/Java/" class="archive-article-date">
+
+        
+        <a href="/2023/03/28/Java/" class="archive-article-date">
   	<time datetime="2023-03-28T13:50:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/Java/">Java</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 来源：<a target="_blank" rel="noopener" href="https://how2j.cn/">How2J的Java教程</a></p>
+<h3 id="Java中的类"><a href="#Java中的类" class="headerlink" title="Java中的类"></a>Java中的类</h3><p>一个类需要定义再一个单独的Java文件中。一个类可以拥有自己的属性，自己的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hero</span> &#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">float</span> hp;</span><br><span class="line">    <span class="type">float</span> armor;</span><br><span class="line">    <span class="type">int</span> moveSpeed;</span><br><span class="line">    <span class="type">float</span> <span class="title function_">getArmor</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> armor;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">keng</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;坑队友！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Hero garen=<span class="keyword">new</span> <span class="title class_">Hero</span>();</span><br><span class="line">        garen.name=<span class="string">&quot;盖伦&quot;</span>;</span><br><span class="line">        garen.hp=<span class="number">616.28f</span>;</span><br><span class="line">        garen.armor=<span class="number">27.536f</span>;</span><br><span class="line">        garen.moveSpeed=<span class="number">350</span>;</span><br><span class="line"></span><br><span class="line">        Hero teemo=<span class="keyword">new</span> <span class="title class_">Hero</span>();</span><br><span class="line">        teemo.name=<span class="string">&quot;提莫&quot;</span>;</span><br><span class="line">        teemo.hp=<span class="number">383f</span>;</span><br><span class="line">        teemo.armor=<span class="number">14f</span>;</span><br><span class="line">        teemo.moveSpeed=<span class="number">330</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Java中的变量"><a href="#Java中的变量" class="headerlink" title="Java中的变量"></a>Java中的变量</h3><p>变量是代表一个数据的标识符</p>
+<p>Java中共有8种数据类型：</p>
+<ol>
+<li>整型：byte（有符号8位），short（有符号16位），int（有符号32位），long（有符号64位）</li>
+<li>字符型：char（16位）</li>
+<li>浮点型：float（32位），double（64位）</li>
+<li>布尔类型：boolean（1位）</li>
+</ol>
+<p><mark>在Java的布尔类型中，只能通过true和false来进行赋值，而不能直接赋值0或者1</mark></p>
+<p>在8种基本类型之外，还有一种常用的数据类型，String，String类型一旦创建就不能修改。</p>
+<h4 id="字面值赋值"><a href="#字面值赋值" class="headerlink" title="字面值赋值"></a>字面值赋值</h4><p>对于基本类型，包括String，可以直接使用字面值来赋值，不使用new，</p>
+<p>整型字面值：</p>
+<ul>
+<li>一般整数：int类型</li>
+<li>以l或者L结束的整数：long类型</li>
+<li>以0开头的整数：八进制</li>
+<li>以0b开头的整数，二进制</li>
+<li>以0x开头的整数：16进制</li>
+</ul>
+<p>浮点字面值</p>
+<ul>
+<li>一般的浮点数：double类型</li>
+<li>以f或者F结束的浮点数：float类型</li>
+</ul>
+<h4 id="类型的转换"><a href="#类型的转换" class="headerlink" title="类型的转换"></a>类型的转换</h4><p>低精度转高精度随意</p>
+<p>高精度转低精度看情况</p>
+<h4 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h4><p>被final关键字修饰的变量只有一次赋值的机会</p>
+<p>在声明时进行了赋值，则之后不能再进行赋值</p>
+<p>在声明时没有赋值，在之后有唯一的一次赋值机会。</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/28/Java/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/09/%E9%A3%9E%E6%A1%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2023-03-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-09</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2023/03/09/%E9%A3%9E%E6%A1%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">飞桨机器学习</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/09/%E9%A3%9E%E6%A1%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">飞桨机器学习</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">百度松果</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -253,8 +357,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
