@@ -290,6 +290,78 @@
 </table>
 </div>
 <p>关于binarySearch方法，在进行查找前必须通过sort函数对数组进行排序，因为查找的依据是根据数值之间的大小关系进行的。当要查找的数不在数组中时，会返回一个负数，该负数是-x-1，其中x是该数如果在数组中时，其应该处于的位置</p>
+<h4 id="Java中的类和对象"><a href="#Java中的类和对象" class="headerlink" title="Java中的类和对象"></a>Java中的类和对象</h4><p>在Java中，处理基本类型以外，全部都是引用。</p>
+<p>extends关键字表继承，继承的类也同样具有被继承的类中的属性和方法</p>
+<p><strong>可变参数</strong></p>
+<p>Java支持函数重载，与函数的可变数量参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ADHero</span> <span class="keyword">extends</span> <span class="title class_">Hero</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">attack</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;发动了一次攻击&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">attack</span><span class="params">(Hero... heros)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Hero hero:heros) &#123;</span><br><span class="line">            System.out.println(name + <span class="string">&quot; 攻击了 &quot;</span> + hero.name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>构造方法</strong></p>
+<p>一个类默认有一个无参的空白的构造方法</p>
+<p>当声明了有参构造方法，默认的方法即失效</p>
+<p>可以同时再声明一个无参构造作为默认的</p>
+<p>构造方法支持重载</p>
+<p><strong>this关键字</strong></p>
+<p>代表当前的对象，特殊之处在于可以通过this来直接调用类的构造方法，主要用于在一个构造方法中调用另一个构造方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hero</span> &#123;</span><br><span class="line">    String name; <span class="comment">//姓名</span></span><br><span class="line">    <span class="type">float</span> hp; <span class="comment">//血量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Hero</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Hero</span><span class="params">(String name)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name=name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Hero</span><span class="params">(String name,<span class="type">float</span> fp)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>(name);</span><br><span class="line">        <span class="built_in">this</span>.hp=fp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>传参</strong></p>
+<p>基本类型传值</p>
+<p>类类型传引用。</p>
+<p>在方法内对变量或对象引用的修改不会造成原本变量或者引用的变化。</p>
+<p><strong>类之间的访问修饰关系</strong></p>
+<p>具有继承关系的类之间，属性的关系评价是能够继承。而不具备继承关系的类之间，评价是能否访问</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>自身</th>
+<th>同包子类</th>
+<th>不同包子类</th>
+<th>同包类</th>
+<th>其他类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private</td>
+<td>可以访问</td>
+<td>不能继承</td>
+<td>不能继承</td>
+<td>不能访问</td>
+<td>不能访问</td>
+</tr>
+<tr>
+<td>package</td>
+<td>可以访问</td>
+<td>可以继承</td>
+<td>不能继承</td>
+<td>可以访问</td>
+<td>不能访问</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>可以访问</td>
+<td>可以继承</td>
+<td>可以继承</td>
+<td>可以访问</td>
+<td>不能访问</td>
+</tr>
+<tr>
+<td>public</td>
+<td>可以访问</td>
+<td>可以继承</td>
+<td>可以继承</td>
+<td>可以访问</td>
+<td>可以访问</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>静态属性</strong>与方法</p>
+<p>通过static关键字进行标识，</p>
+<p>静态属性：同一个类下产生的所有对象共享同一个静态属性，</p>
+<p>静态方法：对于一个类来说不需要存在一个对象，可以直接进行访问的方法</p>
+<p>ps：在静态方法中无法获取到类的非静态方法和属性</p>
 
       
 
