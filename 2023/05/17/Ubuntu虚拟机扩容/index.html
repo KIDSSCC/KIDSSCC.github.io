@@ -6,15 +6,34 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023/3 | Hexo</title>
+  <title>Ubuntu虚拟机扩容 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/03/index.html">
+  <meta name="description" content="VMware Ubuntu虚拟机磁盘扩容背景VMware17 pro，Ubuntu22.04系统，创建虚拟机时，一次性分配了80G磁盘空间，不记得当时怎么弄的，80G的磁盘空间并没有全部挂载在根目录下，而是分为了&#x2F;dev&#x2F;sda3何&#x2F;dev&#x2F;sda4两部分，其中&#x2F;dev&#x2F;sda3占有45G左右空间，挂载在&#x2F;home&#x2F;media&#x2F;kids中，&#x2F;dev&#x2F;sda4占有35G左右空间，挂载在&#x2F;目录下，一年">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu虚拟机扩容">
+<meta property="og:url" content="http://example.com/2023/05/17/Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%89%A9%E5%AE%B9/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="VMware Ubuntu虚拟机磁盘扩容背景VMware17 pro，Ubuntu22.04系统，创建虚拟机时，一次性分配了80G磁盘空间，不记得当时怎么弄的，80G的磁盘空间并没有全部挂载在根目录下，而是分为了&#x2F;dev&#x2F;sda3何&#x2F;dev&#x2F;sda4两部分，其中&#x2F;dev&#x2F;sda3占有45G左右空间，挂载在&#x2F;home&#x2F;media&#x2F;kids中，&#x2F;dev&#x2F;sda4占有35G左右空间，挂载在&#x2F;目录下，一年">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517190526478.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517190209000.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517191125674.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517192119772.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517192327946.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517192623985.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517193153587.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517193322633.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517193613914.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517193629785.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517193819940.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517194200860.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517194236846.png">
+<meta property="article:published_time" content="2023-05-17T10:56:42.000Z">
+<meta property="article:modified_time" content="2023-05-17T11:45:42.779Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Vmwware Ubuntu">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517190526478.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,87 +169,209 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Ubuntu虚拟机扩容" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/Java/" class="archive-article-date">
-  	<time datetime="2023-03-28T13:50:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/Java/">Java</a>
+    <h1 class="article-title" itemprop="name">
+      Ubuntu虚拟机扩容
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/09/%E9%A3%9E%E6%A1%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2023-03-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-09</time>
+        
+        <a href="/2023/05/17/Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%89%A9%E5%AE%B9/" class="archive-article-date">
+  	<time datetime="2023-05-17T10:56:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-17</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/09/%E9%A3%9E%E6%A1%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">飞桨机器学习</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="VMware-Ubuntu虚拟机磁盘扩容"><a href="#VMware-Ubuntu虚拟机磁盘扩容" class="headerlink" title="VMware Ubuntu虚拟机磁盘扩容"></a>VMware Ubuntu虚拟机磁盘扩容</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>VMware17 pro，Ubuntu22.04系统，创建虚拟机时，一次性分配了80G磁盘空间，不记得当时怎么弄的，80G的磁盘空间并没有全部挂载在根目录下，而是分为了/dev/sda3何/dev/sda4两部分，其中/dev/sda3占有45G左右空间，挂载在/home/media/kids中，/dev/sda4占有35G左右空间，挂载在/目录下，一年左右的时间，系统提示存储空间不足，考虑进行扩容</p>
+<h2 id="磁盘情况"><a href="#磁盘情况" class="headerlink" title="磁盘情况"></a>磁盘情况</h2><p>在Ubuntu命令行中输入df -h命令可以查看当前系统的磁盘设备与文件系统的挂载情况，在Ubuntu22.04中，也有磁盘占用分析器(从文件系统挂载角度显示磁盘情况)和磁盘(从磁盘设备角度显示磁盘情况)</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517190526478.png" alt="image-20230517190526478"></p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517190209000.png" alt="image-20230517190209000"></p>
+<p>查看磁盘情况后发现，挂载在根目录下/dev/sda4使用率达到96%,但/dev/sda3使用率仅20%左右，系统中有30G左右的磁盘空间未得到利用，考虑对两个磁盘设备的大小进行调整，分配更多空间给/dev/sda4用于根目录。</p>
+<h2 id="分区工具"><a href="#分区工具" class="headerlink" title="分区工具"></a>分区工具</h2><p>Ubuntu中对磁盘分区进行调整的工具：gparted，可以通过sudo apt-get install gparted进行安装</p>
+<p>启动后，可以显示各个分区目前所处的位置并进行大小的调整，具体的调整方法为在分区名上右键+resize，</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517191125674.png" alt="image-20230517191125674"></p>
+<p>两个需要注意的地方：</p>
+<ol>
+<li>将一部分未分配的空间分配给已经存在的一个分区，要求这两个分区必须相邻，</li>
+<li>直接在Ubuntu中启动gparted的话，此时对分区大小进行调整，进行扩容的话一般只能是向右进行扩容，<strong>不能直接</strong>将分区向左移动，如上图中，如果从/dev/sda3中再切分出一部分unallocated空间的话，此时是<strong>不能直接</strong>分配给/dev/sda4，因为这部分空间在/dev/sda4的左边，</li>
+</ol>
+<p>很不幸的是，对于我当前情况，我只能从/dev/sda3出划分空间，不能直接分配给/dev/sda4,得想别的法子，大致的意思是，当前的系统就正好运行在/dev/sda4上，因此/dev/sda4不能进行移动，得通过U盘来启动系统，此时系统运行在移动盘上，就可以对原有的磁盘进行操作了</p>
+<h2 id="制作Ubuntu启动盘"><a href="#制作Ubuntu启动盘" class="headerlink" title="制作Ubuntu启动盘"></a>制作Ubuntu启动盘</h2><p>倒是也不需要制作一个完全的新的Ubuntu启动盘，gparted工具提供一个iso镜像，可以来完成这样的磁盘分区功能</p>
+<p>gparted镜像下载：<a target="_blank" rel="noopener" href="https://gparted.org/download.php">https://gparted.org/download.php</a></p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517192119772.png" alt="image-20230517192119772"></p>
+<p>往下滑找到amd64的镜像，点击下载</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517192327946.png" alt="image-20230517192327946"></p>
+<p>准备好了镜像，开始准备拷盘的工具，相关的工具挺多的，B站教程一抓一把，这里选了一个UItralISO，收费工具，但可以试用，应该也很少会有人整天用这东西做启动盘，一次两次没问题，</p>
+<p>UItralISO下载：<a target="_blank" rel="noopener" href="https://cn.ultraiso.net/xiazai.html">https://cn.ultraiso.net/xiazai.html</a></p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517192623985.png" alt="image-20230517192623985"></p>
+<p>下载安装环节省略，安装结束后点击运行UItralISO，左上角:文件-&gt;打开，选择刚刚下载好的gparted启动镜像，左上角:启动-&gt;写入硬盘映像，插一个空U盘，开写就行。好了，然后你就得到了一个gparted的启动U盘</p>
+<h2 id="通过U盘启动"><a href="#通过U盘启动" class="headerlink" title="通过U盘启动"></a>通过U盘启动</h2><h3 id="虚拟机添加磁盘"><a href="#虚拟机添加磁盘" class="headerlink" title="虚拟机添加磁盘"></a>虚拟机添加磁盘</h3><p><strong>以管理员模式启动VMware</strong>，<strong>以管理员模式启动VMware</strong>，<strong>以管理员模式启动VMware</strong>，</p>
+<p>在Vmware主页面上方，虚拟机-&gt;可移动设备,在里面找到U盘设备，应该是会在最下面的一个，把它从主机连接到虚拟机上</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517193153587.png" alt="image-20230517193153587"></p>
+<p>虚拟机关机，编辑虚拟机设置，选择下方的添加，为虚拟机新建一个硬盘设备</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517193322633.png" alt="image-20230517193322633"></p>
+<p>磁盘类型不用动，在选择磁盘的页面，选择最下面的“使用物理磁盘”</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517193613914.png" alt="image-20230517193613914"></p>
+<p>选择物理磁盘的页面，下来选择PhysicalDrive1,使用整个磁盘，下一步的指定磁盘文件不需要修改，最后点击确定，完成设置</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517193629785.png" alt="image-20230517193629785"></p>
+<h3 id="BIOS启动"><a href="#BIOS启动" class="headerlink" title="BIOS启动"></a>BIOS启动</h3><p>库页面右键虚拟机，电源-&gt;打开电源时进入固件，就会自动启动虚拟机并进入BIOS页面，当前，愿意正常启动然后拼手速按F2的也不是不行</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517193819940.png" alt="image-20230517193819940"></p>
+<p>成功进入到BIOS页面</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517194200860.png" alt="image-20230517194200860"></p>
+<p>右移挪到Boot目录下，有两个地方的顺序需要调整：</p>
+<ol>
+<li>在HardDrive菜单下，需要把Hard Drive(0:1)通过shift+’+’挪到HardDrive菜单的最上面</li>
+<li>同样的shift+’+’,把整个HadrDrive挪到Boot的最上面来，</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/image-20230517194236846.png" alt="image-20230517194236846"></p>
+<p>变成这个样子，然后F10，保存并重新启动</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">百度松果</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Vmwware Ubuntu</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/05/17/Ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%89%A9%E5%AE%B9/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2023/05/10/Sort-algorithm/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Sort algorithm</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -253,8 +394,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
