@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Java | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本篇是复习Java的过程中所记 来源：How2J的Java教程">
+  <meta name="description" content="快速复习JavaJava是大二学的，脑子是马上忘的。春招准备实习的时候简单的重新过一遍Java，开了这一篇来记点东西。 来源：How2J的Java教程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java">
 <meta property="og:url" content="http://example.com/2023/03/28/Java/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="本篇是复习Java的过程中所记 来源：How2J的Java教程">
+<meta property="og:description" content="快速复习JavaJava是大二学的，脑子是马上忘的。春招准备实习的时候简单的重新过一遍Java，开了这一篇来记点东西。 来源：How2J的Java教程">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-28T13:50:46.000Z">
-<meta property="article:modified_time" content="2023-07-11T11:38:55.185Z">
+<meta property="article:modified_time" content="2023-07-11T11:50:12.846Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -175,7 +175,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本篇是复习Java的过程中所记 来源：<a target="_blank" rel="noopener" href="https://how2j.cn/">How2J的Java教程</a></p>
+        <h2 id="快速复习Java"><a href="#快速复习Java" class="headerlink" title="快速复习Java"></a>快速复习Java</h2><p>Java是大二学的，脑子是马上忘的。春招准备实习的时候简单的重新过一遍Java，开了这一篇来记点东西。</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://how2j.cn/">How2J的Java教程</a></p>
 <span id="more"></span>
 <h3 id="Java中的类"><a href="#Java中的类" class="headerlink" title="Java中的类"></a>Java中的类</h3><p>一个类需要定义再一个单独的Java文件中。一个类可以拥有自己的属性，自己的方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hero</span> &#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">float</span> hp;</span><br><span class="line">    <span class="type">float</span> armor;</span><br><span class="line">    <span class="type">int</span> moveSpeed;</span><br><span class="line">    <span class="type">float</span> <span class="title function_">getArmor</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> armor;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">keng</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;坑队友！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Hero garen=<span class="keyword">new</span> <span class="title class_">Hero</span>();</span><br><span class="line">        garen.name=<span class="string">&quot;盖伦&quot;</span>;</span><br><span class="line">        garen.hp=<span class="number">616.28f</span>;</span><br><span class="line">        garen.armor=<span class="number">27.536f</span>;</span><br><span class="line">        garen.moveSpeed=<span class="number">350</span>;</span><br><span class="line"></span><br><span class="line">        Hero teemo=<span class="keyword">new</span> <span class="title class_">Hero</span>();</span><br><span class="line">        teemo.name=<span class="string">&quot;提莫&quot;</span>;</span><br><span class="line">        teemo.hp=<span class="number">383f</span>;</span><br><span class="line">        teemo.armor=<span class="number">14f</span>;</span><br><span class="line">        teemo.moveSpeed=<span class="number">330</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -628,19 +629,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Vmwware Ubuntu</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">期末复习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">百度松果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -649,6 +638,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
             
             <div class="clearfix"></div>
