@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Picture/pic1.png">
 <meta property="article:published_time" content="2023-05-05T12:08:04.000Z">
-<meta property="article:modified_time" content="2023-07-19T11:03:56.469Z">
+<meta property="article:modified_time" content="2023-07-29T10:08:26.480Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -232,6 +232,9 @@
 <p>fast指针每次前进两个节点，slow指针每次前进1个节点，那么再经过$km-c-a$次移动，二者必然相遇。</p>
 <p>如上的计算可以证明，在成环的情况下，快慢指针是必然相遇的，而在无环的情况下，fast指针会先一步到达终点，链表结束，因此通过快慢指针可以判断出链表是否成环。而想要进一步判断环的入口，则可以将快慢指针中的任意一个重新放置在head节点处，并使二者开始以相同的速度进行移动，当两个指针再次相遇时，所处的节点就是环的入口节点。证明如下：</p>
 <p>继续上面的推导，快慢指针第一次相遇时，所处的位置相对于环的入口，为$km-c$,此时将任意节点放置在head处，两个指针以相同速度进行移动，则再经过c次移动，从head出发的节点将到达环的入口，同时，已经在环内的指针相对于环入口的位置为$km$,即环的入口，此时两个指针再次相遇，从而可以确定环的入口，通过这种方式也可以来判断出环以外部分的长度。</p>
+<h3 id="12-获取链表倒数第k个节点"><a href="#12-获取链表倒数第k个节点" class="headerlink" title="12. 获取链表倒数第k个节点"></a>12. 获取链表倒数第k个节点</h3><p>有点奇怪，正常应该是快慢指针的解法。快指针比慢指针先出发k步，最后快指针到达nullptr时，慢指针就是倒数第k个节点。时间复杂度$O(n)$,空间复杂度$O(1)$</p>
+<p>但是采用二次遍历的方式，遍历一遍得到总数，遍历第二遍确定倒数第k个，时间复杂度和空间复杂度也和上面是一样的。</p>
+<p><mark>刷完了链表部分的oj，最为常用的两种办法是快慢指针和滑动窗口。构造滑动窗口结构在很多情况下都可以在$O(n)$下完成对链表的操作</mark></p>
 
       
 
