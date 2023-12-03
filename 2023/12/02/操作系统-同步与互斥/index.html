@@ -16,8 +16,11 @@
 <meta property="og:description" content="操作系统—同步与互斥​    首先介绍一下在操作系统中，进程之间可能会出现的竞态条件，随后针对进程之间的同步以及互斥需要，提供简单的基于硬件或软件的解决方法。并简单介绍信号量，管程，在解决同步互斥问题上的应用。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231202162302547.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231203224726799.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231203225644026.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231203230427866.png">
 <meta property="article:published_time" content="2023-12-02T07:41:52.000Z">
-<meta property="article:modified_time" content="2023-12-02T08:40:46.125Z">
+<meta property="article:modified_time" content="2023-12-03T15:09:15.660Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary">
@@ -199,7 +202,28 @@
 <li>无忙等待：一个进行在临界区外等待时，可以被挂起，避免始终占用CPU</li>
 </ol>
 <p>下面，将依次介绍一些用于临界区设计以及互斥共享控制的方案。</p>
-
+<h2 id="二-基于软件的解决方案"><a href="#二-基于软件的解决方案" class="headerlink" title="二. 基于软件的解决方案"></a>二. 基于软件的解决方案</h2><h3 id="1-买面包的问题"><a href="#1-买面包的问题" class="headerlink" title="1. 买面包的问题"></a>1. 买面包的问题</h3><p>​    假设如下的使用场景。A与B两个人合租且共同使用一台冰箱。冰箱里需要有一些面包的储备。当A或B发现冰箱里没有面包时，就需要人去买面包然后重新放到冰箱中了，同时，只需要一个人去买面包（就当作两份面包放不下吧）。这样一个场景模拟了一种简单的情况即两个进程共同访问并修改同一个共享资源。在这个场景下需要满足的两个条件：</p>
+<ol>
+<li><p>发现没有面包时，需要有人去买面包。</p>
+</li>
+<li><p>有人去买面包时不需要另一个人去了。</p>
+</li>
+</ol>
+<blockquote>
+<p>不进行限制</p>
+</blockquote>
+<p>如果不加以限制。如下面的情况：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231203224726799.png" alt="image-20231203224726799"></p>
+<p>​    条件1显然是满足的，但是条件2不一定。<strong>在不加以干涉的情况下，进程的调度可能随时发生。</strong>在A识别到没有面包时，执行买面包这个动作之前。可能就会发生进程的调度。将控制权转交给B，此时B也会发现现在没有面包了，从而导致两个人都去买面包了。违背了条件2.</p>
+<blockquote>
+<p>通过单一标签进行指示</p>
+</blockquote>
+<p>在上面的解决方案中，条件2不满足的原因时，A与B之间无法得到<strong>对方已经去买面包</strong>了这一状态。导致重复购买，如果设置一个标签，在A要出发去买面包时，留下一个标签提示B现在已经有人去买面包了。即下面的解决方案：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231203225644026.png" alt="image-20231203225644026"></p>
+<p>​    问题依然不会得到有效解决。还是因为<strong>在不加以干涉的情况下，进程的调度可能随时发生。</strong>按照上图中指令的执行顺序。最终还是会购买两次面包。</p>
+<p>​    要想从根本上解决重复购买的问题。最简单的思路就是保证即便在发生了进程调度的情况下，在A执行查看面包，买面包的动作期间，禁止B也来查看面包或者买面包。直到A买完面包回来。B才能执行对应的操作。假设有一些锁的实现。</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231203230427866.png" alt="image-20231203230427866" style="zoom:67%;" /></p>
+<h3 id="2-Perterson算法"><a href="#2-Perterson算法" class="headerlink" title="2. Perterson算法"></a>2. Perterson算法</h3>
       
 
       
@@ -457,15 +481,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">OS</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,7 +497,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">OS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,7 +505,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
             
             <div class="clearfix"></div>
