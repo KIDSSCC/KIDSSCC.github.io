@@ -19,8 +19,11 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231203224726799.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231203225644026.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231203230427866.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231212104439125.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231212105800751.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231212111023532.png">
 <meta property="article:published_time" content="2023-12-02T07:41:52.000Z">
-<meta property="article:modified_time" content="2023-12-03T15:09:15.660Z">
+<meta property="article:modified_time" content="2023-12-12T03:10:48.477Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary">
@@ -223,7 +226,16 @@
 <p>​    问题依然不会得到有效解决。还是因为<strong>在不加以干涉的情况下，进程的调度可能随时发生。</strong>按照上图中指令的执行顺序。最终还是会购买两次面包。</p>
 <p>​    要想从根本上解决重复购买的问题。最简单的思路就是保证即便在发生了进程调度的情况下，在A执行查看面包，买面包的动作期间，禁止B也来查看面包或者买面包。直到A买完面包回来。B才能执行对应的操作。假设有一些锁的实现。</p>
 <p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231203230427866.png" alt="image-20231203230427866" style="zoom:67%;" /></p>
-<h3 id="2-Perterson算法"><a href="#2-Perterson算法" class="headerlink" title="2. Perterson算法"></a>2. Perterson算法</h3>
+<h3 id="2-Perterson算法"><a href="#2-Perterson算法" class="headerlink" title="2. Perterson算法"></a>2. Perterson算法</h3><p>​        两种尝试的思路。一种是通过一个共享变量来控制当前应该由哪个线程进入临界区。如下所示：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231212104439125.png" alt="image-20231212104439125" style="zoom:67%;" /></p>
+<p>​        在这种方式下，两个线程会轮流进入临界区执行任务。每次执行结束后，都会把执行权转交给另一个进程。但这种设计并不满足刚刚的空闲让进。若Ti结束了循环，不再进入临界区。此时虽然没有线程处于临界区。但是因为Tj没有线程来继续修改共享变量，也无法进入临界区了。</p>
+<p>​        对上面的设计进行改进，采用双标志位代表每个线程自己的状态。具体设计如下：</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231212105800751.png" alt="image-20231212105800751" style="zoom:67%;" /></p>
+<p>​        采用双标志位来代表每个线程自己的状态。这样即便在Ti结束的情况下，Tj也能够正常进入临界区执行。但是这种改进又不满足有限等待原则。    可能存在两个线程的标志位同时为1，导致两个人全部死锁在while循环上，谁也无法进入临界区执行。</p>
+<p><strong>ps：如果将置位操作 flag[i]=1和flag[j]=1，后移至while循环后，又会导致两个线程可能同时进入临界区。不满足临界区的忙则等待。</strong></p>
+<p>​        综上，单标志位的方法会导致只能轮流进入，不满足空闲让进。双标志位的方法会导致过分谦让，不满足有限等待。Peterson算法就是同时结合了单标志位与双标志位的方法。来同时解决二者的问题。即在双标志位方法下两个线程过分谦让时，通过另一个单标志位来指示由哪个线程进入临界区。</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231212111023532.png" alt="image-20231212111023532" style="zoom:67%;" /></p>
+
       
 
       
@@ -481,15 +493,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,11 +513,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
             
             <div class="clearfix"></div>
