@@ -22,8 +22,9 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231212104439125.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231212105800751.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231212111023532.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231219201834955.png">
 <meta property="article:published_time" content="2023-12-02T07:41:52.000Z">
-<meta property="article:modified_time" content="2023-12-12T03:10:48.477Z">
+<meta property="article:modified_time" content="2023-12-19T12:33:46.687Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary">
@@ -235,7 +236,16 @@
 <p><strong>ps：如果将置位操作 flag[i]=1和flag[j]=1，后移至while循环后，又会导致两个线程可能同时进入临界区。不满足临界区的忙则等待。</strong></p>
 <p>​        综上，单标志位的方法会导致只能轮流进入，不满足空闲让进。双标志位的方法会导致过分谦让，不满足有限等待。Peterson算法就是同时结合了单标志位与双标志位的方法。来同时解决二者的问题。即在双标志位方法下两个线程过分谦让时，通过另一个单标志位来指示由哪个线程进入临界区。</p>
 <p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231212111023532.png" alt="image-20231212111023532" style="zoom:67%;" /></p>
-
+<h3 id="3-Bakery算法"><a href="#3-Bakery算法" class="headerlink" title="3. Bakery算法"></a>3. Bakery算法</h3><p>​        Bakery算法考虑了在并发互斥下新的问题即公平性问题。根据临界区的有限等待原则，一个试图进入临界区的线程都应该在有限的等待时间内得到进入临界区的机会。但仅仅是有限等待并不能保证一个线程在进入临界区前需要等待多长时间，因此，考虑一种最理想，最公平的情况。如果线程A在线程B之前试图访问临界区（调用lock函数）那么最终，A应该在B之前进入临界区。</p>
+<p><img src="https://raw.githubusercontent.com/KIDSSCC/MarkDown_image/main/Pictureimage-20231219201834955.png" alt="image-20231219201834955" style="zoom:67%;" /></p>
+<p>Bakery算法适用于N个线程等待进入同一个临界区，核心的判断在于lock函数的while部分：</p>
+<ol>
+<li>每个进程在进入临界区时，都会获得一个数字，</li>
+<li>对于每个线程而言，若其想进入临界区，其当前获得的数字必须是所有想要进入临界区的线程中最小的一个</li>
+<li>如果Pi和Pj接收到同样的数字，且i&lt;j,则Pi先进入临界区。</li>
+</ol>
+<p>​    Bakery算法虽然实现简单，无死锁（任意时刻在所有想要进入临界区的线程中一定有一个编号最小的），公平无饥饿，但是并不十分实用。一方面Bakery算法的每一次判断都需要对所有线程的编号进行遍历。在线程数增多的情况下，会带来比较严重的性能损失。同时，在无界增长下，赋予线程的编号也可能出现越界的情况（虽然可以通过复杂的有界编号方案来缓解），从而损坏其中的公平性。</p>
+<h2 id="三-基于硬件的解决方法"><a href="#三-基于硬件的解决方法" class="headerlink" title="三. 基于硬件的解决方法"></a>三. 基于硬件的解决方法</h2><h3 id="1-禁用硬件中断"><a href="#1-禁用硬件中断" class="headerlink" title="1. 禁用硬件中断"></a>1. 禁用硬件中断</h3><h3 id="2-硬件原子操作"><a href="#2-硬件原子操作" class="headerlink" title="2. 硬件原子操作"></a>2. 硬件原子操作</h3><h3 id="3-信号量"><a href="#3-信号量" class="headerlink" title="3. 信号量"></a>3. 信号量</h3><h3 id="4-管程"><a href="#4-管程" class="headerlink" title="4. 管程"></a>4. 管程</h3>
       
 
       
